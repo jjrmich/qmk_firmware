@@ -471,7 +471,7 @@ static void md_rgb_matrix_config_override(int i) {
         // Do not act on this LED
     } else if (led_lighting_mode == LED_MODE_NON_KEYS_ONLY && !HAS_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) {
         // Do not act on this LED
-    } else if (led_lighting_mode == LED_MODE_INDICATORS_ONLY) {
+    } else if (led_lighting_mode == LED_MODE_INDICATORS_ONLY && !LED_IS_INDICATOR(led_map[i].scan)) {
         // Do not act on this LED (Only show indicators)
     } else {
         led_instruction_t* led_cur_instruction = led_instructions;
