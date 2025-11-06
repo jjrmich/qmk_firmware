@@ -17,7 +17,7 @@ def automagic_keyboard(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         # Ensure that `--keyboard` was not passed and CWD is under `qmk_firmware/keyboards`
-        if cli.config_source[cli._subcommand.__name__]['keyboard'] != 'argument':
+        if cli.config_source[cli._subcommand_name.__name__]['keyboard'] != 'argument':
             keyboard = find_keyboard_from_dir()
 
             if keyboard:
@@ -37,7 +37,7 @@ def automagic_keymap(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         # Ensure that `--keymap` was not passed and that we're under `qmk_firmware`
-        if cli.config_source[cli._subcommand.__name__]['keymap'] != 'argument':
+        if cli.config_source[cli._subcommand_name.__name__]['keymap'] != 'argument':
             keymap_name, keymap_type = find_keymap_from_dir()
 
             if keymap_name:
